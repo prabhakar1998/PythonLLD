@@ -5,7 +5,7 @@ from pricing_stratergy import PricingStratergy
 
 class ParkingTicket:
 
-    def __init__(self, vehicle: Vehicle, entry_gate: str, parking_spot: ParkingSpot, pricing_stratergy: PricingStratergy):
+    def __init__(self, vehicle: Vehicle, entry_gate: str, parking_spot: ParkingSpot):
 
         self.vehicle = vehicle
         self.vehicle_number = vehicle.get_vehicle_numer()
@@ -13,10 +13,9 @@ class ParkingTicket:
         self.entry_time = time.time()
         self.parking_spot = parking_spot
         self.exit_time = None
-        self.pricing_stratergy = pricing_stratergy
+    #     self.pricing_stratergy = pricing_stratergy
 
-    def get_price(self) -> float:
-        self.exit_time = time.time()
-        stratergy_price = self.pricing_stratergy.get_price(self.vehicle, self.entry_time, self.exit_time)
-        print(f"Billed {stratergy_price} from stratergy")
-        return stratergy_price
+    # def get_price(self) -> float:
+    #     self.exit_time = time.time()
+    #     stratergy_price = self.pricing_stratergy.get_price(self.vehicle, self.entry_time, self.exit_time)
+    #     return stratergy_price
