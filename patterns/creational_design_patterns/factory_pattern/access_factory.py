@@ -1,14 +1,14 @@
-from const import ADMIN, SUPERVISOR, USER
+from const import User
 from access_control import AdminAccessControl, SupervisorAccessControl, UserAccessControl
 
 class AccessControlFactory:
     _role_mapping = {
-        ADMIN: AdminAccessControl,
-        SUPERVISOR: SupervisorAccessControl,
-        USER: UserAccessControl
+        User.ADMIN: AdminAccessControl,
+        User.SUPERVISOR: SupervisorAccessControl,
+        User.USER: UserAccessControl
     }
 
-    def __init__(self, user_type):
+    def __init__(self, user_type: User):
         self.user_type = user_type
 
     def get_permissions(self):
