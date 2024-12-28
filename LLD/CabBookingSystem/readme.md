@@ -30,18 +30,3 @@ via Tests or a main method.
 * Functional Completeness including good modelling.
 * User Identification but not authentication.
 * Backend Database is optional. However modelling should be complete.
-
-
-
-
-# use case flow:-
-
-Cab Booking system is initialized (Singleton):
-    1. multiple cabs are created at differnet locations
-    2. cabs are set to idle state
-    3. rider is created at a location
-    4. rider creates a trip, in the BookingState
-    5. CBS searches all the cabs in the range of the location
-    6. CBS requests the cab to book the ride
-    7. cab accpets the ride
-    8. CBS updates the rider and trip's status

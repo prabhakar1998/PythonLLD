@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING, List, Optional
 from abc import ABC, abstractmethod
 from CabBookingSystem.exceptions import TripExistsError
 
@@ -18,7 +18,7 @@ class Rider(ABC):
         self.trip = None
         self.CBS = cbs
 
-    def create_trip(self, destination: Location) -> Trip:
+    def create_trip(self, destination: Location) -> Optional[Trip]:
         if self.trip is not None:
             raise TripExistsError(f"Trip already exists for destination {self.trip.destination}")
 
@@ -27,7 +27,6 @@ class Rider(ABC):
         if self.CBS.request_trip(self, self.trip):
             print(f"Rider {self.name} cab is booked sucessfully.")
             return self.trip
-        
         return None
     
     def start_ride(self, otp: str):

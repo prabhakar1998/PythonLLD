@@ -1,6 +1,6 @@
 from __future__ import annotations
-from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
+from abc import ABC
+from typing import TYPE_CHECKING, Optional
 from CabBookingSystem.strategies.pricing_strategy import PricingStrategy
 from CabBookingSystem.consts import CabType, TripStatus
 import time
@@ -18,7 +18,7 @@ class Trip(ABC):
         self.source = source
         self.destination = destination
         self.status = TripStatus.Requested
-        self.cab: Cab = None
+        self.cab: Optional[Cab] = None
         self._trip_fare = 0
 
     def get_destination(self) -> Location:

@@ -1,6 +1,6 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from CabBookingSystem.exceptions import CabBusyError, NoTripFoundError, DestinationNotArrived
 from CabBookingSystem.strategies.booking_strategy import BookingStrategy
@@ -24,7 +24,7 @@ class Cab(ABC):
         self.number = number
         self.location = location
         self.booking_strategy: BookingStrategy = booking_strategy
-        self.trip: Trip = None
+        self.trip: Optional[Trip] = None
         self.type: CabType = CabType.Basic
         self.pricing_strategy: PricingStrategy = pricing_strategy
 
@@ -56,7 +56,7 @@ class Cab(ABC):
         self.location = new_location
 
     def start_trip(self, otp:str):
-        if self.validate_otp(otp):
+        if self.trip is not None and self.validate_otp(otp):
             wait_time = 0
             if self.wait_start_time is not None:
                 wait_time = time.time() - self.wait_start_time
